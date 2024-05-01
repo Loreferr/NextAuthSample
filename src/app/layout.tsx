@@ -25,15 +25,26 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav>
+        <nav className="flex justify-center items-center bg-slate-500 gap-8 h-10">
           {!!session && (
             <>
-              <p>{session?.user?.username}</p>
-              <p>{session?.user?.accessToken}</p>
+              <p className="font-bold text-md">
+                Welcome {session?.user?.username}
+              </p>
+
+              <Link href={"/users"}>Users</Link>
+
               <Logout></Logout>
             </>
           )}
-          {!session && <Link href={"/api/auth/login"}>Login</Link>}
+          {!session && (
+            <>
+              <Link href={"/login"}>Login</Link>
+              <Link href={"/register"}>Register</Link>
+              <Link href={"/register2"}>Register2</Link>
+            </>
+          )}
+          <Link href={"/dashboard"}>Dashboard</Link>
         </nav>
         {children}
       </body>
