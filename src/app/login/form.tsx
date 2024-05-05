@@ -99,26 +99,33 @@ export default function Form() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <button className="bg-black text-white p-2 rounded-md" type="submit">
-          Login
-        </button>
+        {random !== 0 ? (
+          <>
+            <button
+              className="bg-black text-white p-2 rounded-md"
+              type="submit"
+            >
+              Login
+            </button>
+            <input
+              value={inputCode}
+              onChange={(e) => setInputCode(Number(e.target.value))}
+              type="number"
+            />
+          </>
+        ) : (
+          <button
+            onClick={handleEmail}
+            className="bg-black text-white p-2 rounded-md"
+          >
+            START
+          </button>
+        )}
+
         <Link className="text-underline" href="/register2">
           Not Register Yet? Click Here
         </Link>
       </form>
-      <button
-        onClick={handleEmail}
-        className="bg-black text-white p-2 rounded-md"
-      >
-        START
-      </button>
-      {random !== 0 ? (
-        <input
-          value={inputCode}
-          onChange={(e) => setInputCode(Number(e.target.value))}
-          type="number"
-        />
-      ) : null}
     </div>
   );
 }
