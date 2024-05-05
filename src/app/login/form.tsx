@@ -2,6 +2,7 @@
 
 import Credentials from "next-auth/providers/credentials";
 import { signIn } from "next-auth/react";
+import { Link } from "next-view-transitions";
 import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
 
@@ -49,6 +50,9 @@ export default function Form() {
         <button className="bg-black text-white p-2 rounded-md" type="submit">
           Login
         </button>
+        <Link className="text-underline" href="/register2">
+          Not Register Yet? Click Here
+        </Link>
       </form>
     </div>
   );

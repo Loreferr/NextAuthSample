@@ -1,8 +1,11 @@
 "use client";
 
+import { Link } from "next-view-transitions";
+import { redirect, useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
 export const Register2Form = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     username: "",
@@ -94,6 +97,9 @@ export const Register2Form = () => {
         <button className="bg-black text-white p-2 rounded-md" type="submit">
           Register
         </button>
+        <Link className="text-underline" href="/login">
+          Already Registered? Click Here to Login{" "}
+        </Link>
       </form>
     </div>
   );

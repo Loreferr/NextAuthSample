@@ -1,13 +1,10 @@
 import { getServerSession } from "next-auth";
 import Form from "./form";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+
 import { redirect } from "next/navigation";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export default async function LoginPage() {
-  const session = await getServerSession(authOptions);
-  if (session) {
-    redirect("/");
-  }
   return (
     <div className="flex justify-center items-center h-screen">
       <Form />

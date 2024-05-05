@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getServerSession } from "next-auth";
-
+import { ViewTransitions } from "next-view-transitions";
 import Logout from "./logout";
-import Link from "next/link";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+
+import Baselayout from "./base-layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,35 +19,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession(authOptions);
-  console.log(session?.user);
-
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <nav className="flex justify-center items-center bg-slate-500 gap-8 h-10">
-          {!!session && (
-            <>
-              <p className="font-bold text-md">
-                Welcome {session?.user?.username}
-              </p>
-
-              <Link href={"/users"}>Users</Link>
-
-              <Logout></Logout>
-            </>
-          )}
-          {!session && (
-            <>
-              <Link href={"/login"}>Login</Link>
-              <Link href={"/register"}>Register</Link>
-              <Link href={"/register2"}>Register2</Link>
-            </>
-          )}
-          <Link href={"/dashboard"}>Dashboard</Link>
-        </nav>
-        {children}
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body className={inter.className}>{children}</body>
+      </html>
+    </ViewTransitions>
   );
 }
