@@ -5,7 +5,7 @@ import { Link } from "next-view-transitions";
 import { redirect } from "next/navigation";
 import React from "react";
 
-export default async function navbar() {
+export default async function Navbar() {
   const session = await getServerSession(authOptions);
   return (
     <nav className="flex justify-center items-center bg-slate-500 gap-8 h-10">

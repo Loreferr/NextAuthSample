@@ -8,13 +8,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ViewTransitions>
-      <html lang="en">
-        <body className={inter.className}>
-          <Navbar></Navbar>
-          {children}
-        </body>
-      </html>
-    </ViewTransitions>
+    <section>
+      <Navbar></Navbar>
+      {children}
+    </section>
   );
 }
