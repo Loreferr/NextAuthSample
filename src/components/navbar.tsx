@@ -26,6 +26,7 @@ export default async function Navbar() {
         </>
       )}
       <Link href={"/"}>Home</Link>
+      <Link href={"/emailSend"}>Email</Link>
     </nav>
   );
 }
