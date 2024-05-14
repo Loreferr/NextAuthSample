@@ -75,24 +75,6 @@
   }
 }
 
-.inputEnter {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-
-.inputEnterActive {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
-}
-
-.inputExit {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.inputExitActive {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 300ms, transform 300ms;
+html {
+  scrollbar-gutter: stable both-edges;
 }

@@ -12,7 +12,6 @@ const Home = async () => {
   return (
     <div>
       <Navbar></Navbar>
-      <h1>Home</h1>
     </div>
   );
 };

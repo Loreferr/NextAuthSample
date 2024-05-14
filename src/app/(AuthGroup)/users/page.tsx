@@ -9,5 +9,9 @@ import { useEffect, useState } from "react";
 export default async function Users() {
   const session = await getServerSession(authOptions);
   if (!session) redirect("/login");
-  return <Countdown />;
+  return (
+    <>
+      <Countdown /> <div className="h-screen"></div>
+    </>
+  );
 }

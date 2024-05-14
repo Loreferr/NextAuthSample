@@ -22,7 +22,9 @@ export default async function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <Baselayout>{children}</Baselayout>
+        </body>
       </html>
     </ViewTransitions>
   );

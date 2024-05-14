@@ -1,41 +1,46 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Input from "./input";
 
 const Countdown = () => {
-  const [seconds, setSeconds] = useState(90);
-  const [isActive, setIsActive] = useState(false);
+  const [countdown, setCountdown] = useState(90);
+  console.log(countdown);
 
-  useEffect(() => {
-    let intervalId;
-
-    if (isActive) {
-      intervalId = setInterval(() => {
-        if (seconds > 0) {
-          setSeconds(seconds - 1);
-        } else {
-          clearInterval(intervalId);
-          // Fai qualcosa quando il countdown raggiunge zero
-        }
-      }, 1000);
-    }
-
-    return () => clearInterval(intervalId);
-  }, [isActive, seconds]);
+  const timerId = useRef(null);
 
   const startCountdown = () => {
-    setIsActive(true);
+    if (timerId.current) return; // Evita di avviare più timer
+
+    timerId.current = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timerId.current);
+          timerId.current = null;
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
   };
+
+  useEffect(() => {
+    // Cleanup on component unmount
+    return () => {
+      if (timerId.current) {
+        clearInterval(timerId.current);
+      }
+    };
+  }, []);
 
   return (
     <>
       <div>
         <h1>Countdown Timer</h1>
-        <p>{seconds}</p>
+        <p>{countdown}</p>
         <button onClick={startCountdown}>Avvia Countdown</button>
       </div>
-      <Input></Input>
+      <Input />
     </>
   );
 };
