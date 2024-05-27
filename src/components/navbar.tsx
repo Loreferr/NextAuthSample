@@ -1,9 +1,10 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import Logout from "@/app/logout";
+import { authOptions } from "@/app/[locale]/api/auth/[...nextauth]/route";
+import Logout from "@/app/[locale]/logout";
 import { getServerSession } from "next-auth";
 import { Link } from "next-view-transitions";
 import { redirect } from "next/navigation";
 import React from "react";
+import LocalSwitcher from "./local-switcher";
 
 export default async function Navbar() {
   const session = await getServerSession(authOptions);
@@ -16,6 +17,7 @@ export default async function Navbar() {
           <Link href={"/users"}>Users</Link>
           <Link href={"/dashboard"}>Dashboard</Link>
           <Logout></Logout>
+          <LocalSwitcher></LocalSwitcher>
         </>
       )}
       {!session && (

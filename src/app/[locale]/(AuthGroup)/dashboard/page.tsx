@@ -1,7 +1,7 @@
 "use client";
 
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import CardComponent from "@/app/components/card";
+import { authOptions } from "@/app/[locale]/api/auth/[...nextauth]/route";
+import CardComponent from "@/app/[locale]/components/card";
 import { getServerSession } from "next-auth";
 import { Link } from "next-view-transitions";
 import { redirect } from "next/navigation";

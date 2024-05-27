@@ -1,4 +1,4 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/[locale]/api/auth/[...nextauth]/route";
 import Countdown from "@/components/countdown";
 import Input from "@/components/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
